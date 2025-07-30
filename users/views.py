@@ -22,7 +22,6 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         # Add custom claims
         token['email'] = user.email
         token['is_staff'] = user.is_staff
-        token['anonymous_unique_id'] = user.anonymous_unique_id
 
         return token
 
@@ -53,7 +52,6 @@ def registerUser(request):
     serializer = UserSerializer(data=request.data)
     if serializer.is_valid():
         user = serializer.save()
-        # Generate JWT token after successful registration
         refresh = CustomTokenObtainPairSerializer.get_token(user)
         return Response({
             "user": serializer.data,
