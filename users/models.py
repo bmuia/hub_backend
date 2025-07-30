@@ -39,10 +39,3 @@ class User(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []  
 
-    def clean(self):
-        super().clean()
-        self.email = self.__class__.objects.normalize_email(self.email)
-        if self.pk and User.objects.filter(email=self.email).exclude(pk=self.pk).exists():
-            raise ValidationError({'email': 'This email address is already in use.'}) 
-
-
