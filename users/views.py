@@ -49,11 +49,6 @@ def getUser(request, pk):
 @api_view(['POST'])
 @permission_classes([AllowAny])  
 def registerUser(request):
-    if not request.user.is_staff:
-        return Response(
-            {"message": "You do not have permission to perform this action."},
-            status=status.HTTP_403_FORBIDDEN,
-        )
 
     serializer = UserSerializer(data=request.data)
     if serializer.is_valid():
