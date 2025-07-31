@@ -2,7 +2,7 @@
 
 #### **Project Overview**
 
-**HUB API** is a full-stack web application that enables users to create, browse, and engage with user-generated jokes. Users can register, log in, submit their own jokes, and vote on others' contributions. The backend API is built using Django and Django REST Framework, offering a secure and scalable architecture.
+**HUB API** is an API that enables users to create, browse, and engage with user-generated jokes. Users can register, log in, submit their own jokes, and vote on others' contributions. The backend is built using Django and Django REST Framework, offering a secure and scalable architecture.
 
 **Live Demo:** [https://hub-backend-qtb7.onrender.com](https://hub-backend-qtb7.onrender.com)
 
