@@ -2,6 +2,12 @@ pipeline {
     agent any
 
     stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/bmuia/hub_backend.git'
+            }
+        }
+
         stage('Initialize') {
             steps {
                 echo 'Starting Django CI/CD Pipeline...'
@@ -10,12 +16,6 @@ pipeline {
                     . myenv/bin/activate
                     pip install --upgrade pip
                 '''
-            }
-        }
-
-        stage('Checkout') {
-            steps {
-                git branch: 'main', url: 'https://github.com/bmuia/hub_backend.git'
             }
         }
 
@@ -28,7 +28,7 @@ pipeline {
             }
         }
 
-        stage('Run FastAPI') {
+        stage('Run Django') {
             steps {
                 sh '''
                     . myenv/bin/activate
@@ -43,7 +43,7 @@ pipeline {
             echo 'Cleaning up...'
             sh '''
                 . myenv/bin/activate
-                deactivate
+                deactivate || true
                 rm -rf myenv
             '''
         }
@@ -54,4 +54,4 @@ pipeline {
             echo 'Pipeline failed!'
         }
     }
-}  
+}
