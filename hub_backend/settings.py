@@ -17,8 +17,16 @@ SECRET_KEY = 'django-insecure-dip2(%rxum^q-fa3etqof0g+8(3-zwrj8%uurtc^ik(c^mbm03
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'hub-backend-qtb7.onrender.com',
+]
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://localhost:5173",
+    "http://localhost:4000",
+    
+]
 
 # Application definition
 
