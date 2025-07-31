@@ -31,7 +31,7 @@ The application follows RESTful design principles, offering the following API en
 | `/api/jokes/create/`  | POST   | Create a new joke (**requires authentication**).         | `{ "content": "Why don't scientists trust atoms?", "category": "Science" }`          | `{ "id": 1, "content": "...", "category": "...", "created_at": "..." }`              |
 | `/api/likes/create/`  | POST   | Like a joke (**requires authentication**).               | `{ "joke": 1 }`                                                                      | `{ "id": 1, "user": 1, "joke": 1, "is_liked": true, "created_at": "..." }`           |
 | `/api/votes/create/`  | POST   | Upvote or downvote a joke (**requires authentication**). | `{ "joke": 1, "vote_type": "upvote" }`                                               | `{ "id": 1, "user": 1, "joke": 1, "vote_type": "upvote", "created_at": "..." }`      |
-| `/api/jokes/random/`  | GET    | Fetch and store a random joke from an external API.      | —                                                                                    | `{ "id": 1, "content": "...", "category": "...", "created_at": "..." }`              |
+| `/api/jokes/random/`  | GET    | Fetch and store a random joke from an external API. (**requires authentication**)     | —                                                                                    | `{ "id": 1, "content": "...", "category": "...", "created_at": "..." }`              |
 
 ---
 
