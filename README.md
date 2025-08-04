@@ -19,27 +19,220 @@ This project was collaboratively developed by:
 ---
 
 #### **API Endpoints**
+---
 
-The application follows RESTful design principles, offering the following API endpoints for user and joke management:
+### `/auth/register`
 
-| Endpoint              | Method | Description                                              | Request (JSON)                                                                       | Response (JSON)                                                                      |
-| :-------------------- | :----- | :------------------------------------------------------- | :----------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------- |
-| `/auth/register`      | POST   | Register a new user.                                     | `{ "username": "testuser", "email": "test@example.com", "password": "password123" }` | `{ "user": { "id": 1, "username": "testuser" }, "refresh": "...", "access": "..." }` |
-| `/auth/login`         | POST   | Log in and receive JWT tokens.                           | `{ "email": "test@example.com", "password": "password123" }`                         | `{ "refresh": "...", "access": "...", "user": { "id": 1, "username": "testuser" } }` |
-| `/auth/token/refresh` | POST   | Refresh an access token using a refresh token.           | `{ "refresh": "..." }`                                                               | `{ "access": "..." }`                                                                |
-| `/api/jokes/`         | GET    | Retrieve all jokes.                                      | —                                                                                    | `[ { "id": 1, "content": "Joke text", "category": "General" }, ... ]`                |
-| `/api/jokes/create/`  | POST   | Create a new joke (**requires authentication**).         | `{ "content": "Why don't scientists trust atoms?", "category": "Science" }`          | `{ "id": 1, "content": "...", "category": "...", "created_at": "..." }`              |
-| `/api/likes/create/`  | POST   | Like a joke (**requires authentication**).               | `{ "joke": 1 }`                                                                      | `{ "id": 1, "user": 1, "joke": 1, "is_liked": true, "created_at": "..." }`           |
-| `/api/votes/create/`  | POST   | Upvote or downvote a joke (**requires authentication**). | `{ "joke": 1, "vote_type": "upvote" }`                                               | `{ "id": 1, "user": 1, "joke": 1, "vote_type": "upvote", "created_at": "..." }`      |
-| `/api/jokes/random/`  | GET    | Fetch and store a random joke from an external API. (**requires authentication**)     | —                                                                                    | `{ "id": 1, "content": "...", "category": "...", "created_at": "..." }`              |
+**Method:** POST
+**Description:** Register a new user.
 
+**Request Body:**
+
+```json
+{
+  "username": "testuser",
+  "email": "test@example.com",
+  "password": "password123"
+}
+```
+
+**Response Body:**
+
+```json
+{
+  "user": {
+    "id": 1,
+    "username": "testuser"
+  },
+  "refresh": "...",
+  "access": "..."
+}
+```
+
+---
+
+### `/auth/login`
+
+**Method:** POST
+**Description:** Log in and receive JWT tokens.
+
+**Request Body:**
+
+```json
+{
+  "email": "test@example.com",
+  "password": "password123"
+}
+```
+
+**Response Body:**
+
+```json
+{
+  "refresh": "...",
+  "access": "...",
+  "user": {
+    "id": 1,
+    "username": "testuser"
+  }
+}
+```
+
+---
+
+### `/auth/token/refresh`
+
+**Method:** POST
+**Description:** Refresh an access token using a refresh token.
+
+**Request Body:**
+
+```json
+{
+  "refresh": "..."
+}
+```
+
+**Response Body:**
+
+```json
+{
+  "access": "..."
+}
+```
+
+---
+
+### `/api/jokes/`
+
+**Method:** GET
+**Description:** Retrieve all jokes.
+
+**Request Body:**
+*None*
+
+**Response Body:**
+
+```json
+[
+  {
+    "id": 1,
+    "content": "Joke text",
+    "category": "General"
+  },
+  ...
+]
+```
+
+---
+
+### `/api/jokes/create/`
+
+**Method:** POST
+**Description:** Create a new joke (**requires authentication**).
+
+**Request Body:**
+
+```json
+{
+  "content": "Why don't scientists trust atoms?",
+  "category": "Science"
+}
+```
+
+**Response Body:**
+
+```json
+{
+  "id": 1,
+  "content": "Why don't scientists trust atoms?",
+  "category": "Science",
+  "created_at": "..."
+}
+```
+
+---
+
+### `/api/likes/create/`
+
+**Method:** POST
+**Description:** Like a joke (**requires authentication**).
+
+**Request Body:**
+
+```json
+{
+  "joke": 1
+}
+```
+
+**Response Body:**
+
+```json
+{
+  "id": 1,
+  "user": 1,
+  "joke": 1,
+  "is_liked": true,
+  "created_at": "..."
+}
+```
+
+---
+
+### `/api/votes/create/`
+
+**Method:** POST
+**Description:** Upvote or downvote a joke (**requires authentication**).
+
+**Request Body:**
+
+```json
+{
+  "joke": 1,
+  "vote_type": "upvote"
+}
+```
+
+**Response Body:**
+
+```json
+{
+  "id": 1,
+  "user": 1,
+  "joke": 1,
+  "vote_type": "upvote",
+  "created_at": "..."
+}
+```
+
+---
+
+### `/api/jokes/random/`
+
+**Method:** GET
+**Description:** Fetch and store a random joke from an external API (**requires authentication**).
+
+**Request Body:**
+*None*
+
+**Response Body:**
+
+```json
+{
+  "id": 1,
+  "content": "...",
+  "category": "...",
+  "created_at": "..."
+}
+```
 ---
 
 #### **Getting Started**
 
 **Requirements:**
 
-* Python 3.8+
+* Python 3.7+
 * pip
 
 **Setup Instructions:**
@@ -76,5 +269,7 @@ The application follows RESTful design principles, offering the following API en
    ```bash
    python manage.py runserver
    ```
+
+
 
 Once running, the API will be accessible at: [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
