@@ -71,10 +71,6 @@ This project was collaboratively developed by:
 {
   "refresh": "...",
   "access": "...",
-  "user": {
-    "id": 1,
-    "username": "testuser"
-  }
 }
 ```
 
