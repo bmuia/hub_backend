@@ -28,8 +28,11 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://localhost:5173",
     "http://localhost:4000",
+    "https://hub-jade-seven.vercel.app"
     
 ]
+
+
 
 # Application definition
 
