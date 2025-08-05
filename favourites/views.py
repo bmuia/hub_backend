@@ -53,3 +53,13 @@ class FetchExternalJokeView(APIView):
                 'created_at': joke.created_at
             }, status=status.HTTP_201_CREATED)
         return Response({'error': 'Failed to fetch joke'}, status=500)
+
+class FetchLikedJokesView(APIView):
+    def get(self, request):
+        liked_joke_ids = Like.objects.filter(user=request.user, is_liked=True).values_list('joke_id', flat=True)
+        liked_jokes = Joke.objects.filter(id__in=liked_joke_ids)
+        liked_jokes = Joke.objects.filter(id__in=liked_joke_ids)
+        
+        serializer = JokeSerializer(liked_jokes, many=True)
+        
+        return Response(serializer.data, status=status.HTTP_200_OK)

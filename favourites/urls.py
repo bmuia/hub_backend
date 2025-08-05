@@ -5,6 +5,7 @@ from .views import (
     LikeCreateView,
     VoteCreateView,
     FetchExternalJokeView,
+    FetchLikedJokesView
 )
 
 urlpatterns = [
@@ -13,4 +14,5 @@ urlpatterns = [
     path('likes/create/', LikeCreateView.as_view(), name='create-like'),
     path('votes/create/', VoteCreateView.as_view(), name='create-vote'),
     path('jokes/random/', FetchExternalJokeView.as_view(), name='fetch-random-joke'),
+    path('jokes/favourites/', FetchLikedJokesView.as_view(), name='fetch-liked-jokes'),
 ]
