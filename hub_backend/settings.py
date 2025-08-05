@@ -24,13 +24,14 @@ ALLOWED_HOSTS = [
 ]
 
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://localhost:5173",
-    "http://localhost:4000",
-    "https://hub-jade-seven.vercel.app"
-    
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000",
+#     "http://localhost:5173",
+#     "http://localhost:4000",
+#     "https://hub-jade-seven.vercel.app"  
+# ]
+
+CORS_ALLOW_ALL_ORIGINS = True   
 
 
 
