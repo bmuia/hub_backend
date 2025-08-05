@@ -223,6 +223,28 @@ This project was collaboratively developed by:
 }
 ```
 ---
+### `api/jokes/favurite`
+**Method:** GET
+**Description** Fetch jokes liked by the user / favourite
+**Request Body**
+*None*
+
+**Response Body:**
+```json
+  {
+    "id": 12,
+    "content": "Why did the programmer quit his job? Because he didn't get arrays.",
+    "category": "Programming",
+    "created_at": "2025-08-05T08:30:00Z"
+  },
+  {
+    "id": 15,
+    "content": "I told my computer I needed a break, and it said 'No problem, I’ll go to sleep.'",
+    "category": "Tech",
+    "created_at": "2025-08-04T10:45:00Z"
+  }
+```
+---
 
 #### **Getting Started**
 
