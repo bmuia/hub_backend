@@ -7,8 +7,12 @@ from .serializers import UserSerializer
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
 import logging
+from rest_framework.views import APIView
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 
 logger = logging.getLogger(__name__)
@@ -96,3 +100,12 @@ def deleteUser(request, pk):
         status=status.HTTP_204_NO_CONTENT
     )
 
+
+
+class ListAllUsersView(APIView):
+    permission_classes = [AllowAny]
+
+    def get(self, request):
+        users = User.objects.all()
+        serializer = UserSerializer(users, many=True)
+        return Response(serializer.data)
